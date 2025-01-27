@@ -1,6 +1,32 @@
-<div>
-    Implement details in this component.
-</div>
-<p>
-    Implement search in the <a [routerLink]="['/']">search component</a>
-</p>
+
+<div class="page">
+    <div class="content">
+      <a routerLink="/" class="back-link">Back to search results</a>
+
+      @if(userDetails$ | async; as user) {
+        <div class="person-details">
+            <h1 class="person-name">{{user?.name}}</h1>
+            <p class="favorite-color">Favorite Color: <span>{{user?.favorite_color}}</span></p>
+          </div>
+      
+          <div class="quotes">
+
+          @for (key of getSortedKeys(user.quotes); track $index) {
+            <div class="quote">
+                @for (quote of user.quotes[key]; track $index) {
+                    <p class="quote-text">
+                      {{quote}}
+                    </p>
+                }
+                <p class="quote-likes">{{key}} Likes</p>
+              </div>
+          }@empty {
+            <p>No quotes available</p>
+          }
+          </div>
+            
+    }
+
+
+    </div>
+  </div>

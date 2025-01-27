@@ -1,0 +1,72 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    color: #333;
+  
+    .header {
+      background-color: #f5f5f5;
+      text-align: center;
+      padding: 16px;
+      font-size: 24px;
+      border-bottom: 1px solid #ccc;
+    }
+  
+    .content {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+  
+      .back-link {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+        margin-bottom: 20px;
+        display: inline-block;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+  
+      .person-details {
+        margin-bottom: 30px;
+  
+        .person-name {
+          font-size: 32px;
+          font-weight: bold;
+          margin: 0;
+        }
+  
+        .favorite-color {
+          font-size: 16px;
+          margin: 10px 0;
+          color: #666;
+  
+          span {
+            color: #000;
+          }
+        }
+      }
+  
+      .quotes {
+        .quote {
+          margin-bottom: 20px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #e0e0e0;
+  
+          .quote-text {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0 0 5px;
+          }
+  
+          .quote-likes {
+            font-size: 14px;
+            color: #999;
+          }
+        }
+      }
+    }
+  }
+  
