@@ -18,6 +18,16 @@
     }
 }
 
+main{
+    overflow-x: hidden;
+}
+
 .content {
-    margin: 25px 35px;
+    margin: 0;
+}
+
+@media (min-width: 567px) {
+    .content {
+        margin: 25px 35px;
+    }
 }

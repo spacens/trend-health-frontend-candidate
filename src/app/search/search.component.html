@@ -11,7 +11,7 @@
     
         <div class="search-results">
           @for (match of data(); track $index) {
-            <div class="search-result" [routerLink]="['.', pagePath.search_page, match.id]">
+            <div class="search-result" [routerLink]="['.', pagePath.search_page, match.id]" queryParamsHandling="preserve">
               <h4>{{ match.name }}</h4>
             </div>
           }
