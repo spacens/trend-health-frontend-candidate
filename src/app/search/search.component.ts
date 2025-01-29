@@ -5,6 +5,7 @@ import {SearchService} from "./data-access/service/search.service"
 import {SearchFormComponent} from "./ui/search-form.component"
 import {SearhResInterface} from "./data-access/search.model"
 import {PAGE_PATH} from "../app-routing.module"
+import {RouteDataService} from "../shared/services/route-data.service"
 
 @Component({
   selector: "app-search",
@@ -17,6 +18,7 @@ import {PAGE_PATH} from "../app-routing.module"
 export class SearchComponent implements OnInit, OnDestroy {
   private readonly route = inject(ActivatedRoute)
   private readonly searchService = inject(SearchService)
+  private readonly routeDataService = inject(RouteDataService)
   readonly pagePath = PAGE_PATH
   readonly message = signal("")
   readonly data = signal<SearhResInterface[] | []>([])
@@ -36,6 +38,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   getResults() {
     this.subs.add = this.route.queryParams.subscribe((params) => {
       if (params["name"] || params["color"]) {
+        // update route data service
+        this.updateCurrentRouteHandler(params["name"], params["color"])
+
         this.subs.add = this.searchService
           .searchData(params["name"], params["color"])
           .subscribe({
@@ -48,5 +53,12 @@ export class SearchComponent implements OnInit, OnDestroy {
           })
       }
     })
+  }
+
+  updateCurrentRouteHandler(name?: string, color?: string) {
+    this.routeDataService.updateRoute = {
+      name,
+      color,
+    }
   }
 }

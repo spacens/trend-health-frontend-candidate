@@ -1,7 +1,7 @@
 
 <div class="page">
     <div class="content">
-      <a class="back-link" routerLink="/" queryParamsHandling="preserve">Back to search results</a>
+      <a class="back-link" (click)="goBackWithParams()">Back to search results</a>
 
       @if(userDetails$ | async; as user) {
         <div class="person-details">
