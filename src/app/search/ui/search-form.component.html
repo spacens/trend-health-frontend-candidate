@@ -1,0 +1,48 @@
+<div class="search-form-container">
+    <form class="search-form" [formGroup]="searchForm" (submit)="submit()">
+      <!-- Name Input -->
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter a name"
+          class="form-control"
+          formControlName="name" (keyup.enter)="submit()" />
+          @if (name.dirty && name.hasError('required')) {
+              <div class="text-danger">
+                  <span>This field is required</span>
+              </div>
+          }
+      </div>
+  
+      <!-- Favorite Color Dropdown -->
+      <div class="form-group">
+        <label for="color">Favorite Color:</label>
+        <select
+          id="color"
+          name="color"
+          class="form-control"
+          formControlName="color">
+          <option value="">Select a color</option>
+          <option value="blue">Blue</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+        </select>
+        @if (color.dirty && color.hasError('required')) {
+          <div class="text-danger">
+              <span>This field is required</span>
+          </div>
+      }
+      </div>
+  
+      <!-- Search Button -->
+      <div class="form-group">
+        <section class="flex-btns">
+          <button class="btn" (click)="searchForm.reset()">Clear</button>
+          <button type="submit" class="btn btn-primary" [disabled]="searchForm.invalid">Search</button>
+        </section>
+      </div>
+    </form>
+  </div>

@@ -9,3 +9,14 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+button:disabled,
+button[disabled]{
+    opacity: 50%;
+}
+
+.text-danger{
+    color: $warning;
+    font-size: 14px;
+    font-weight: 500;
+}

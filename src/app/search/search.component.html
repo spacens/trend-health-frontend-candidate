@@ -1,6 +1,24 @@
-<p>
-    Implement search in this component
-</p>
-<p>
-    Implement details in the <a [routerLink]="['/details/123']">details component</a>
-</p>
+<div class="search-layout">
+    <app-search-form />
+  
+    <div>
+    @if(message()){
+      <div class="text-danger">
+        <span>{{message()}}</span>
+      </div>
+    } @else if(data().length){
+        <h3>Search Results</h3>
+    
+        <div class="search-results">
+          @for (match of data(); track $index) {
+            <div class="search-result" [routerLink]="['.', pagePath.search_page, match.id]">
+              <h4>{{ match.name }}</h4>
+            </div>
+          }
+        </div>
+    } @else {
+      <h3>No Results Found</h3>
+    }
+    </div>
+  </div>
+  
